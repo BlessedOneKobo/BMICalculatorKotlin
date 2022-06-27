@@ -8,4 +8,5 @@
     <string name="weight_input_hint">Weight (kg)</string>
     <string name="calculate_button_text">calculate</string>
     <string name="clear_button_text">clear</string>
+    <string name="result_text">Your BMI is %.2f</string>
 </resources>

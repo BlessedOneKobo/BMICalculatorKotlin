@@ -1,6 +1,7 @@
 package com.example.bmicalculator
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -9,6 +10,8 @@ import com.example.bmicalculator.const.BmiConstants.MIN_AGE
 import com.example.bmicalculator.const.BmiConstants.SNACKBAR_DURATION
 import com.example.bmicalculator.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
+
+const val EXTRA_RESULT = "com.example.bmicalculator.EXTRA_RESULT"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -50,7 +53,10 @@ class MainActivity : AppCompatActivity() {
 
         val heightInMeters = height / 100.0
         val bmi: Double = weight / (heightInMeters * heightInMeters)
-        Snackbar.make(binding.root, "Your BMI is $bmi", SNACKBAR_DURATION).show()
+        val intent = Intent(this, ResultActivity::class.java).apply {
+            putExtra(EXTRA_RESULT, bmi)
+        }
+        startActivity(intent)
     }
 
     private fun clearInputs() {
